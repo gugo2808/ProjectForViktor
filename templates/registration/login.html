@@ -18,9 +18,11 @@
         {{ form.as_p }}
         <button>Войти</button>
     </form>
+    {% if request.user.is_superuser %}
+
     <div id="usersCount">
     </div>
-    <button onclick="localStorage.removeItem('usersCount')">Reset</button>
+    <button onclick="localStorage.removeItem('usersCount')">Reset</button> {% endif %}
     <script>
         document.getElementById("usersCount").innerText = localStorage.getItem('usersCount')
     </script>
