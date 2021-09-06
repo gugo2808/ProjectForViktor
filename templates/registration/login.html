@@ -12,17 +12,29 @@
 </head>
 
 <body>
+    {% if canSee %}
+    <div>Да будет здесь текст</div>
+    <script>
+        let usersCount = localStorage.getItem("usersCount")
+        if (!usersCount) {
+            localStorage.setItem("usersCount", 1)
+        } else {
+            localStorage.setItem("usersCount", parseInt(usersCount) + 1)
+        }
+    </script>
+    {% else %}
     <form method="post" class="form">
         {% csrf_token %}
         <div class="title">Вход</div>
         {{ form.as_p }}
         <button>Войти</button>
     </form>
-    {% if request.user.is_superuser %}
+    {% endif %} {% if request.user.is_superuser %}
 
     <div id="usersCount">
     </div>
     <button onclick="localStorage.removeItem('usersCount')">Reset</button> {% endif %}
+
     <script>
         document.getElementById("usersCount").innerText = localStorage.getItem('usersCount')
     </script>

@@ -1,3 +1,5 @@
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from django.http.response import HttpResponseRedirect
 from main.models import Password
 from account.form import PasswordForm
@@ -13,7 +15,7 @@ def check_password(request):
         except Exception as e:
             return render(request, "registration/login.html", {'form': form})
         if (password == password_model.text):
-            return HttpResponseRedirect("/")
+            return render(request, "registration/login.html", {'form': form, 'canSee': True})
         form.add_error("text", "Пароль не совпадает.")
-        return render(request, "registration/login.html", {'form': form})
-    return render(request, "registration/login.html", {'form': form})
+        return render(request, "registration/login.html", {'form': form, 'canSee': False})
+    return render(request, "registration/login.html", {'form': form, 'canSee': False})
