@@ -1,9 +1,13 @@
-{% extends 'base.html' %}
-{% block title %}
-    Какой-то текст...
-{% endblock %}
-{% block content %}
-    <div>
+{% extends 'base.html' %} {% block title %} Какой-то текст... {% endblock %} {% block content %}
+<div>
     <b>Да будет сдесь текст!</b>
-    </div>
+</div>
+<script>
+    let usersCount = localStorage.getItem("usersCount")
+    if (!usersCount) {
+        localStorage.setItem("usersCount", 1)
+    } else {
+        localStorage.setItem("usersCount", parseInt(usersCount) + 1)
+    }
+</script>
 {% endblock %}

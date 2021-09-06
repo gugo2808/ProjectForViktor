@@ -1,3 +1,4 @@
+from main.models import Password
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(Password)

@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Логин</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'account/login.css' %}">
+    <style>
+
+    </style>
 </head>
+
 <body>
-<form method="post" class="form">
-    {% csrf_token %}
-    <div class="title">Вход</div>
-    {{ form.as_p }}
-    <button>Войти</button>
-</form>
+    <form method="post" class="form">
+        {% csrf_token %}
+        <div class="title">Вход</div>
+        {{ form.as_p }}
+        <button>Войти</button>
+    </form>
+    <div id="usersCount">
+    </div>
+    <script>
+        document.getElementById("usersCount").innerText = localStorage.getItem('usersCount')
+    </script>
 </body>
+
 </html>

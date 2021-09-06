@@ -1,6 +1,6 @@
-from django.contrib.auth.views import LoginView
+from .views import check_password
 from django.urls import path
 
 urlpatterns = [
-    path("login/", LoginView.as_view())
+    path("login/", check_password)
 ]
