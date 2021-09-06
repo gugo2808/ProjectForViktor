@@ -1,1 +1,1 @@
-web: gunicorn pap.wsgi --log-file -
+web: gunicorn ProjectForViktor.wsgi --log-file -
